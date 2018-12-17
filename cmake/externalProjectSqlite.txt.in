@@ -1,0 +1,14 @@
+cmake_minimum_required(VERSION 2.8.2)
+
+project(sqlite-download NONE)
+
+include(ExternalProject)
+ExternalProject_Add(sqlite # just get the latest tarball
+        URL               https://www.sqlite.org/src/tarball/sqlite.tar.gz?r=release
+        SOURCE_DIR        "${CMAKE_CURRENT_SOURCE_DIR}/external/sqlite"
+        BINARY_DIR        "${CMAKE_BINARY_DIR}/sqlite"
+        CONFIGURE_COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/external/sqlite/configure"
+        BUILD_COMMAND     make sqlite3.c
+        INSTALL_COMMAND   ""
+        TEST_COMMAND      ""
+        )
